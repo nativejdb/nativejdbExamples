@@ -28,7 +28,7 @@ compile: ## Build the NativeJDB source code.
 
 nativeimage: ## Run a container to generate a native image executable and debug sources for CLASS_NAME app.
 	docker stop $(NATIVEIMAGE) && docker rm $(NATIVEIMAGE) || exit 0;
-	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile.native .
+	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile .
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/../nativejdb/apps:/jdwp/apps $(NATIVEIMAGE)
 
 exec: ## Exec into NATIVEIMAGE container.
