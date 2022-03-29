@@ -5,11 +5,11 @@ package HelloConstructor;
  */
     public class HelloConstructor {
         public static void main(String[] args) throws InterruptedException {
-            Thread.sleep(10000);
             Greeter greeter = new DefaultGreeter();
             greeter.greet();
             greeter = new NamedGreeter("World");
             greeter.greet();
+            Thread.sleep(10000);
         }
     }
 
