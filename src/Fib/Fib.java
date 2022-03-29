@@ -1,4 +1,4 @@
-package fib;
+package Fib;
 
 public class Fib {
 	int n = 0;
