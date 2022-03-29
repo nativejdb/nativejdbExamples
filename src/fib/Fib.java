@@ -1,3 +1,5 @@
+package fib;
+
 public class Fib {
 	int n = 0;
 
