@@ -7,7 +7,7 @@ ARG CLASS_NAME="Hello"
 WORKDIR /jdwp
 
 COPY nativeImageGen.sh .
-COPY src/$CLASS_NAME.java ./src/
+COPY src/$CLASS_NAME ./src/$CLASS_NAME
 
 RUN export DEBIAN_FRONTEND=noninteractive \
 && apt-get -qqy update \

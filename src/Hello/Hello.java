@@ -1,3 +1,5 @@
+package Hello;
+
 import java.io.*;
 
 public class Hello{

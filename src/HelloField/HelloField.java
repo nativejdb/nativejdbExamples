@@ -1,4 +1,4 @@
-/*
+package HelloField;/*
     TO TEST CLASS FIELDS (STATIC, FINAL, PRIMITIVE, OBJECT, COLLECTION, ENUMS ETC ETC..)
  */
 
@@ -13,18 +13,15 @@ public class HelloField {
     private static List listField = new ArrayList<String>();
 
     public static void main(String[] args){
-        try {
-            Thread.sleep(10000);
+        while (true) {
 
             arrayField = new int[2];
             arrayField[0] = INT_FIELD;
             listField.add(STRING_FIELD);
 
-            String print = listField.get(0) + "is fun x " + arrayField.length;
+            String printS = listField.get(0) + "is fun x " + arrayField.length;
 
-            System.out.println(print);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.out.println(printS);
         }
     }
 }
