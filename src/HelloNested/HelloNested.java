@@ -1,7 +1,9 @@
+package HelloNested;
+
 /*
     TO TEST INNER STATIC CLASSES WITH BREAKPOINTS AND STEP OVER/INTO
  */
-public class HelloGreeter {
+public class HelloNested {
     public static abstract class Greeter {
         public static Greeter greeter(String[] args) {
             if (args.length == 0) {
@@ -21,7 +23,7 @@ public class HelloGreeter {
 
     public static class DefaultGreeter extends Greeter {
         public void greet() {
-            System.out.println("Hello World!");
+            System.out.println("Hello.Hello World!");
 
         }
 

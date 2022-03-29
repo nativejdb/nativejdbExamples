@@ -1,3 +1,5 @@
+package HelloMethod;
+
 /*
     TO TEST INNER METHOD CALLS WITH BREAKPOINTS AND STEP OVER/INTO
  */
@@ -18,7 +20,7 @@ public class HelloMethod {
         }
 
         private static  String hello(int i) {
-                String myString = "Hello Method Method" + i;
+                String myString = "Hello.Hello Method Method" + i;
                 return hello(myString);
         }
 }
