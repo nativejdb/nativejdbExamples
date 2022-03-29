@@ -12,15 +12,22 @@ public class HelloField {
     private static int[] arrayField;
     private static List listField = new ArrayList<String>();
 
+    int myField = 0;
+
     public static void main(String[] args){
         try {
             Thread.sleep(10000);
+
+            HelloField h = new HelloField();
+            h.myField = 2;
+            System.out.println("Hello! Field is:" + h.myField);
+
 
             arrayField = new int[2];
             arrayField[0] = INT_FIELD;
             listField.add(STRING_FIELD);
 
-            String print = listField.get(0) + "is fun x " + arrayField.length;
+            String print = listField.get(0) + "is fun x " + arrayField.length + " and " + h.myField;
 
             System.out.println(print);
         } catch (InterruptedException e) {
