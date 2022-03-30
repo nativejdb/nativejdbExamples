@@ -20,7 +20,7 @@ public class HelloMethod {
         }
 
         private static  String hello(int i) {
-                String myString = "Hello.Hello Method Method" + i;
+                String myString = "Hello Method " + i;
                 return hello(myString);
         }
 }

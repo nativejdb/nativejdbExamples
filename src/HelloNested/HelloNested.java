@@ -18,7 +18,7 @@ public class HelloNested {
     }
     public static class DefaultGreeter extends Greeter {
         public void greet() {
-            System.out.println("Hello.Hello World!");
+            System.out.println("Hello World!");
         }
     }
     public static class NamedGreeter extends Greeter {
