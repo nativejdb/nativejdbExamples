@@ -9,13 +9,14 @@ Main repo: https://github.com/nativejdb/nativejdb
 1. Clone each repository to your machine:
 
 **Note:** `nativejdb` repository must be cloned at the same parent level as `nativejdbExamples` for Docker's volume to file system mapping to work. 
-This repository make targets output the nativeimage executable and debug sources into `nativejdb`'s `/apps` directory.
+This repository `make` targets output the native image executable and debug sources into `nativejdb`'s `/apps` directory.
 
 ```shell
 git clone git@github.com:nativejdb/nativejdb.git (IF NOT CLONED ALREADY)
 git clone git@github.com:nativejdb/nativejdbExamples.git
 cd nativejdbExamples
 ```
+### Generating native image executable for an example application
 
 #### 1. Download GraalVM
 
@@ -39,6 +40,8 @@ For any other application, pass the class name as input arg to make target:
 make nativeimage CLASSNAME=****
 ```
 
+**Reminder**: Running `make nativeimage` outputs the native image executable and debug sources into `nativejdb`'s `/apps` directory which will be used by the debugger in the next setup.
+
 Run the following command via a terminal to ssh into docker container:
 
 ```
@@ -50,3 +53,16 @@ Run the following command via a terminal to stop and remove existing docker cont
 ```
 make stop
 ```
+
+### Setup NativeJDB Debugger to start debugging your native image executable generated
+
+Now, we will switch projects or directories to follow instructions for [compiling](https://github.com/nativejdb/nativejdb/blob/main/DEVELOPMENT.md#compiling-your-nativejdb-code) and 
+[running](https://github.com/nativejdb/nativejdb/blob/main/DEVELOPMENT.md#running-your-nativejdb-code) NativeJDB Debugger on Docker.
+
+This will start a `nativejdb` running Docker container.
+
+### Connect IntelliJ Debugger to running `nativejdb` Docker container:
+
+Set breakpoints in the source code file for your example application in this project (for example: [src/Hello/Hello.java](./src/Hello/Hello.java)
+
+On IntelliJ, back from `nativeJDBExamples` open project: Run ---> Remote JVM Debug --> [Hello](./.run/Hello.run.xml)
