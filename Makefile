@@ -31,11 +31,19 @@ nativeimage: ## Run a container to generate a native image executable and debug 
 	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile .
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/../nativejdb/apps:/jdwp/apps $(NATIVEIMAGE)
 
+nativeimageqbicc: ## Run a container to generate a native image executable and debug sources for CLASS_NAME app.
+	docker stop $(NATIVEIMAGE).qbicc && docker rm $(NATIVEIMAGE).qbicc || exit 0;
+	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile.qbicc .
+	docker run --privileged --name $(NATIVEIMAGE).qbicc -v $(PWD)/../nativejdb/apps:/jdwp/apps $(NATIVEIMAGE).qbicc
+
 exec: ## Exec into NATIVEIMAGE container.
 	docker exec -it $(NATIVEIMAGE) /bin/bash
 
 build: ## Build NATIVEIMAGE container.
 	docker build -t $(NATIVEIMAGE) --build-arg REBUILD_EXEC=$(REBUILD) .
+
+buildqbicc: ## Build NATIVEIMAGE container.
+	docker build -t $(NATIVEIMAGE).qbicc --build-arg REBUILD_EXEC=$(REBUILD) -f Dockerfile.qbicc .
 
 run: ## Start NATIVEIMAGE container.
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/apps:/jdwp/apps $(NATIVEIMAGE)
