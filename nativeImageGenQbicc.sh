@@ -10,7 +10,7 @@ do
 done
 
 cp -r src/* apps/
-javac apps/$CLASS_NAME/*.java
+javac -source 11 -target 11 apps/$CLASS_NAME/*.java
 
 IMAGE_NAME=debugeeImg
 
