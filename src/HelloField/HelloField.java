@@ -14,8 +14,7 @@ public class HelloField {
 
     int myField = 0;
 
-    public static void main(String[] args){
-        while (true) {
+    public static void main(String[] args) throws InterruptedException {
 
             HelloField h = new HelloField();
             h.myField = 2;
@@ -29,7 +28,9 @@ public class HelloField {
             String print = listField.get(0) + "is fun x " + arrayField.length + " and " + h.myField;
 
             System.out.println(print);
-        }
+
+            Thread.sleep(10000);
+
     }
 }
 

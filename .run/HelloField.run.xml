@@ -1,6 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="HelloField.HelloField" type="Remote">
-    <module name="NativeJDB" />
+  <configuration default="false" name="HelloField" type="Remote">
     <option name="USE_SOCKET_TRANSPORT" value="true" />
     <option name="SERVER_MODE" value="false" />
     <option name="SHMEM_ADDRESS" />
