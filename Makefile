@@ -37,10 +37,10 @@ exec: ## Exec into NATIVEIMAGE container.
 	docker exec -it $(NATIVEIMAGE) /bin/bash
 
 build: ## Build NATIVEIMAGE container.
-	docker build -t $(NATIVEIMAGE) --build-arg REBUILD_EXEC=$(REBUILD) .
+	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile .
 
 buildqbicc: ## Build NATIVEIMAGE container.
-	docker build -t $(NATIVEIMAGE).qbicc --build-arg REBUILD_EXEC=$(REBUILD) -f Dockerfile.qbicc .
+	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile.qbicc .
 
 run: ## Start NATIVEIMAGE container.
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/apps:/jdwp/apps $(NATIVEIMAGE)
