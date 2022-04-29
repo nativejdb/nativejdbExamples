@@ -17,7 +17,7 @@ SOURCES_DIR=/jdwp/apps/${CLASS_NAME}sources
 
 # Usage: native-image [options] class [imagename] [options]
 #    or  native-image [options] -jar jarfile [imagename] [options]
-cd /jdwp/apps && $GRAALVM_HOME/bin/native-image -g -O0 -H:-OmitInlinedMethodDebugLineInfo -cp $CLASS_NAME.jar -H:Class=$CLASS_NAME.$CLASS_NAME -H:Name=$IMAGE_NAME -H:DebugInfoSourceCacheRoot=$SOURCES_DIR
+cd /jdwp/apps && $GRAALVM_HOME/bin/native-image -g -O0 -H:-SpawnIsolates -H:-OmitInlinedMethodDebugLineInfo -H:DebugInfoSourceSearchPath=/jdwp/src -cp $CLASS_NAME.jar -H:Class=$CLASS_NAME.$CLASS_NAME -H:Name=$IMAGE_NAME -H:DebugInfoSourceCacheRoot=$SOURCES_DIR
 
 #Exit with status of process
 exit $?
