@@ -30,14 +30,19 @@ To generate a native executable within the Linux environment in the Docker conta
 
 - Start Docker Desktop
 
-For existing example application (Hello), run this:
+For non-Quarkus applications, pass the classname (like `Hello`) as input arg to make target (`ISQUARKUS` arg is defaulted to `false`):
 ```
-make nativeimage
+make nativeimage CLASSNAME=Hello
 ```
 
-For any other application, pass the class name as input arg to make target:
+For Quarkus applications, pass the jarname (like `getting-started-1.0.0-SNAPSHOT-runner`) as input to `CLASSNAME` arg, along with setting `ISQUARKUS` arg to `true`:
+
+Note: The jar is built and packaged from the corresponding Quarkus project by running `./mvnw package -Dnative`.
+This produces a jar in `target/*-1.0.0-SNAPSHOT-native-image-source-jar/*-1.0.0-SNAPSHOT-runner.jar` along with a `lib/` directory.
+You will need to move the `*-1.0.0-SNAPSHOT-runner.jar` and `lib/` to `nativejdb/apps/` before running the following command:
+
 ```
-make nativeimage CLASSNAME=****
+make nativeimage CLASSNAME=getting-started-1.0.0-SNAPSHOT-runner ISQUARKUS=true
 ```
 
 **Reminder**: Running `make nativeimage` outputs the native image executable and debug sources into `nativejdb`'s `/apps` directory which will be used by the debugger in the next setup.
