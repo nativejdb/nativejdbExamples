@@ -1,10 +1,11 @@
 #!/bin/bash
 
-while getopts c:q: flag
+while getopts c:q:k: flag
 do
     case "${flag}" in
         c) CLASS_NAME=${OPTARG};;
         q) QBICC_VERSION=${OPTARG};;
+        k) IS_QUARKUS=${OPTARG};;
         *) ;;
     esac
 done

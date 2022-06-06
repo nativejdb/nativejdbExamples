@@ -3,6 +3,7 @@ LABEL maintainer="Ansu Varghese <avarghese@us.ibm.com>"
 
 #Dockerfile input is the class name whose native image must be generated
 ARG CLASS_NAME="Hello"
+ARG IS_QUARKUS="false"
 
 WORKDIR /jdwp
 
@@ -28,5 +29,6 @@ COPY src/$CLASS_NAME ./src/$CLASS_NAME
 ENV CLASS_NAME=$CLASS_NAME
 ENV QBICC_VERSION=0.26.0
 ENV CC=clang
+ENV IS_QUARKUS=$IS_QUARKUS
 
-ENTRYPOINT ./nativeImageGenQbicc.sh -c $CLASS_NAME -q $QBICC_VERSION
+ENTRYPOINT ./nativeImageGenQbicc.sh -c $CLASS_NAME -q $QBICC_VERSION -k $IS_QUARKUS

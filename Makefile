@@ -1,5 +1,6 @@
 NATIVEIMAGE := nativeimage
 CLASSNAME := Hello
+ISQUARKUS := false
 
 all: nativeimage
 
@@ -25,22 +26,22 @@ graalvm: ## Untar graalvm binary using downloaded tarfile in this current direct
 
 nativeimage: ## Run a container to generate a native image executable and debug sources for CLASS_NAME app.
 	docker stop $(NATIVEIMAGE) && docker rm $(NATIVEIMAGE) || exit 0;
-	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile .
+	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) --build-arg IS_QUARKUS=$(ISQUARKUS) -f Dockerfile .
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/../nativejdb/apps:/jdwp/apps $(NATIVEIMAGE)
 
 nativeimageqbicc: ## Run a container to generate a native image executable and debug sources for CLASS_NAME app.
 	docker stop $(NATIVEIMAGE).qbicc && docker rm $(NATIVEIMAGE).qbicc || exit 0;
-	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile.qbicc .
+	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) --build-arg IS_QUARKUS=$(ISQUARKUS) -f Dockerfile.qbicc .
 	docker run --privileged --name $(NATIVEIMAGE).qbicc -v $(PWD)/../nativejdb/apps:/jdwp/apps $(NATIVEIMAGE).qbicc
 
 exec: ## Exec into NATIVEIMAGE container.
 	docker exec -it $(NATIVEIMAGE) /bin/bash
 
 build: ## Build NATIVEIMAGE container.
-	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile .
+	docker build -t $(NATIVEIMAGE) --build-arg CLASS_NAME=$(CLASSNAME) --build-arg IS_QUARKUS=$(ISQUARKUS) -f Dockerfile .
 
 buildqbicc: ## Build NATIVEIMAGE container.
-	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) -f Dockerfile.qbicc .
+	docker build -t $(NATIVEIMAGE).qbicc --build-arg CLASS_NAME=$(CLASSNAME) --build-arg IS_QUARKUS=$(ISQUARKUS) -f Dockerfile.qbicc .
 
 run: ## Start NATIVEIMAGE container.
 	docker run --privileged --name $(NATIVEIMAGE) -v $(PWD)/apps:/jdwp/apps $(NATIVEIMAGE)
