@@ -7,7 +7,7 @@
     <option name="PORT" value="8082" />
     <option name="AUTO_RESTART" value="false" />
     <RunnerSettings RunnerId="Debug">
-      <option name="DEBUG_PORT" value="8080" />
+      <option name="DEBUG_PORT" value="8082" />
       <option name="LOCAL" value="false" />
     </RunnerSettings>
     <method v="2" />
