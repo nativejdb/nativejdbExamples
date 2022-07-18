@@ -1,7 +1,8 @@
 package Fib;
 
 public class Fib {
-	int n = 0;
+	public static int res = 0;
+	public int n = 0;
 
 	public Fib(int n){
 		this.n = n;
@@ -14,7 +15,7 @@ public class Fib {
 		}
 		int a = new Fib(n-1).result();
 		int b = new Fib(n-2).result();
-		int res = a + b;
+		res = a + b;
 		return res;
 	}
 
