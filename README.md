@@ -68,6 +68,6 @@ This will start a `nativejdb` running Docker container.
 
 ### Connect IntelliJ Debugger to running `nativejdb` Docker container:
 
-Set breakpoints in the source code file for your example application in this project (for example: [src/Hello/Hello.java](./src/Hello/Hello.java)
+Set breakpoints in the source code file for your example application in this project (for example: [src/Hello/Hello.java](./src/Hello/Hello.java))
 
 On IntelliJ, back from `nativeJDBExamples` open project: Run ---> Remote JVM Debug --> [Hello](./.run/Hello.run.xml)
